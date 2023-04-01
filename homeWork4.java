@@ -1,12 +1,11 @@
-package org.future.code.homework;
+
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.*;
-import java.util.Map.Entry;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-
 
 /**
  * Правила выполнения домашнего задания:
@@ -29,6 +28,7 @@ public class homeWork4 {
      * Необходимо написать метод correctedList(), который создаст и вернет новый список,
      *      содержащий все строки, не содержащие буквы в верхнем регистре(Заглавные).
      */
+
     /**
      * Задание №2
      * Ивана сортирует в магазине свою корзину покупок.
@@ -36,30 +36,26 @@ public class homeWork4 {
      */
 
     public static List<String> correctedList(List<String> stringList) {
-        List<String> result = new ArrayList<>();
-        for (String str : stringList) {
-            if (!str.matches(".*[A-Z].*")) {
-                result.add(str);
-            }
-        }
-        return result;
-    }
+        List<String> list = new ArrayList<>();
+        for (String str : stringList)
+        str.matches("A-Z");
+
 
 
 
         // Место для Вашего кода задания №1
+        return stringList;
+    }
 
 
 
     public static HashMap<String, Integer> magSort(HashMap<String, Integer> shopCart) {
-        Set<Integer> over300 = shopCart.values().stream()
-                .filter(n -> n > 300)
-                .collect(Collectors.toSet());
+        ConcurrentHashMap<String, Integer> you = new ConcurrentHashMap<>();
+        for (Map.Entry<String, Integer> sort : shopCart.entrySet()) {
+            if (shopCart.get(sort.getKey()) > 300)
+                shopCart.remove(sort.getKey());
 
-        shopCart.values().removeAll(over300);
-
-
-
+        }
         return shopCart;
     }
         // Место для Вашего кода задания №2
@@ -78,7 +74,7 @@ public class homeWork4 {
             "list",
             "windoWWW",
             "user authorization was successful",
-            "this is A complex strecture",
+            "this is A complex strUcture",
             "and who are the judges",
             "The ArrayList class supports dynamic arrays",
             "the arraylist class inherits from the abstractList class"
@@ -129,14 +125,14 @@ public class homeWork4 {
             List<String> antiCheatList = new ArrayList<>();
             antiCheatList.addAll(STRING_LIST);
             antiCheatList.addAll(STRING_LIST_CORRECT);
-            antiCheatList.addAll(homeWork4.setMagazine().keySet().stream().map(Object::toString).toList());
-            antiCheatList.addAll(homeWork4.setlungsCheck().values().stream().map(Object::toString).toList());
+            antiCheatList.addAll(org.future.code.homework.homeWork4.setMagazine().keySet().stream().map(Object::toString).toList());
+            antiCheatList.addAll(org.future.code.homework.homeWork4.setlungsCheck().values().stream().map(Object::toString).toList());
             antiCheatList.add(sb.toString());
             calcHash(antiCheatList);
         };
 
         public static String bytesToHex(byte[] bytes) {
-            char[] HEX_ARRAY = "0123456789ABC-DEF".toCharArray();
+            char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
             char[] hexChars = new char[bytes.length * 2];
             for (int j = 0; j < bytes.length; j++) {
                 int v = bytes[j] & 0xFF;

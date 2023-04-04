@@ -51,19 +51,18 @@ public class HomeWork2 {
 
 
             //Место для Вашего кода из пункта 2
-
-            return null;
+            return true;
         }
 
 
-        public static Boolean isLoginValid(String login) throws LoginValidationException {
+        public static Boolean isLoginValid(String login) {
             //Место для Вашего кода из пункта 3
             try {
                 validateLogin(login);
-                return true;
             } catch (LoginValidationException e) {
                 return false;
             }
+            return true;
         }
 
 
@@ -87,14 +86,10 @@ public class HomeWork2 {
             System.out.println("\nTests for isLoginValid");
             AntiCheat.run();
             for (int i = 0; i < loginList.size(); i++) {
-                try {
-                    printTestCase(i + loginList.size(),
-                            checkLoginResults.get(i),
-                            isLoginValid(loginList.get(i)),
-                            20);
-                } catch (LoginValidationException e) {
-                    throw new RuntimeException(e);
-                }
+                printTestCase(i + loginList.size(),
+                        checkLoginResults.get(i),
+                        isLoginValid(loginList.get(i)),
+                        20);
             }
         }
 
